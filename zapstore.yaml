@@ -2,7 +2,7 @@ repository: https://github.com/DeSentOfficial/AndroidApp
 release_source: https://github.com/DeSentOfficial/AndroidApp/releases
 match: ^DeSent-v[0-9.]+\.apk$
 pubkey: npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xn0v6ua4
-name: DeSent
+name: DeSent Email
 summary: Private email and personal productivity on Nostr
 description: |
   DeSent — a play on *desent* (decentralized via Nostr) and *sent* (email) — is a
