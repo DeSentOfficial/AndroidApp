@@ -1,7 +1,7 @@
 repository: https://github.com/DeSentOfficial/AndroidApp
 release_source: https://github.com/DeSentOfficial/AndroidApp/releases
 match: ^DeSent-v[0-9.]+\.apk$
-pubkey: npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xn0v6ua4
+pubkey: npub13ck092c4zqlar9vs9xnqxezrszj2zep25yjy806v4mfnvjku220u2yumn
 name: DeSent
 summary: Private email and personal productivity on Nostr
 description: |
@@ -43,3 +43,8 @@ supported_nips:
 min_allowed_version_code: 1
 metadata_sources:
   - github
+icon: https://raw.githubusercontent.com/DeSentOfficial/AndroidApp/main/refs/desent-transparent-512px.png
+images:
+  - https://raw.githubusercontent.com/DeSentOfficial/AndroidApp/main/refs/screen1.jpg
+  - https://raw.githubusercontent.com/DeSentOfficial/AndroidApp/main/refs/screen2.jpg
+  - https://raw.githubusercontent.com/DeSentOfficial/AndroidApp/main/refs/screen3.jpg
