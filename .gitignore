@@ -1,0 +1,64 @@
+# Build outputs
+*.apk
+*.aab
+*.aar
+*.ap_
+*.dex
+*.class
+bin/
+gen/
+out/
+release/
+build/
+.gradle/
+.cxx/
+.externalNativeBuild
+.kotlin/
+
+# Local configuration (sdk path, signing properties)
+local.properties
+
+# Keystores and key material — never commit
+*.jks
+*.keystore
+*.key
+*.pem
+*.p12
+keystore/
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Google Services (Firebase etc.)
+google-services.json
+
+# IDE
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+.claude/
+.navigation/
+captures/
+
+# AI-agent session data
+.zcode/
+
+# Lint
+lint/intermediates/
+lint/generated/
+lint/outputs/
+lint/tmp/
+lint-results.xml
+lint-results.html
+
+# Logs & crash dumps
+*.log
+*.hprof
+
+# OS
+.DS_Store
+Thumbs.db

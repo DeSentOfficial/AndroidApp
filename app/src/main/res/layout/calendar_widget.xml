@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background">
+
+    <!-- Row 1: app icon + period title + refresh -->
+    <LinearLayout
+        android:id="@+id/cal_widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:background="@color/md_theme_light_surfaceVariant">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_calendar"
+            android:contentDescription="@null"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/cal_widget_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/widget_calendar_title"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <ImageView
+            android:id="@+id/cal_widget_refresh"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="Refresh"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+    </LinearLayout>
+
+    <!-- Row 2: prev / today / next navigation + D/W/M view toggles -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="6dp"
+        android:paddingVertical="2dp">
+
+        <ImageView
+            android:id="@+id/cal_widget_prev"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_chevron_left"
+            android:contentDescription="Previous"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/cal_widget_today"
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:gravity="center"
+            android:paddingHorizontal="6dp"
+            android:text="@string/widget_calendar_today"
+            android:textColor="@color/md_theme_light_primary"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:background="?android:attr/selectableItemBackground" />
+
+        <ImageView
+            android:id="@+id/cal_widget_next"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:src="@drawable/ic_chevron_right"
+            android:contentDescription="Next"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+
+        <!-- Spacer (Space is not RemoteViews-allowed; an empty weighted
+             TextView achieves the same flexible gap). -->
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/cal_widget_btn_day"
+            android:layout_width="28dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="@string/widget_calendar_day_abbr"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:background="@drawable/calendar_toggle_unselected" />
+
+        <TextView
+            android:id="@+id/cal_widget_btn_week"
+            android:layout_width="28dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="@string/widget_calendar_week_abbr"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:background="@drawable/calendar_toggle_unselected" />
+
+        <TextView
+            android:id="@+id/cal_widget_btn_month"
+            android:layout_width="28dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="4dp"
+            android:gravity="center"
+            android:text="@string/widget_calendar_month_abbr"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="12sp"
+            android:maxLines="1"
+            android:background="@drawable/calendar_toggle_unselected" />
+    </LinearLayout>
+
+    <!-- Month only: weekday labels (set at render time, locale-aware) -->
+    <LinearLayout
+        android:id="@+id/cal_widget_weekday_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="2dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/cal_weekday_0"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_2"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_3"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_4"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_5"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+
+        <TextView
+            android:id="@+id/cal_weekday_6"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="10sp"
+            android:maxLines="1" />
+    </LinearLayout>
+
+    <!-- Month view grid (visibility toggled at render time) -->
+    <GridView
+        android:id="@+id/cal_widget_month_grid"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:numColumns="7"
+        android:stretchMode="columnWidth"
+        android:horizontalSpacing="0dp"
+        android:verticalSpacing="0dp"
+        android:paddingHorizontal="2dp"
+        android:visibility="gone" />
+
+    <!-- Day / week agenda list (visibility toggled at render time) -->
+    <ListView
+        android:id="@+id/cal_widget_agenda_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingVertical="2dp" />
+
+</LinearLayout>

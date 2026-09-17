@@ -1,0 +1,38 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- Branded avatar placeholder: the DeSent speech-bubble mark (body + tail)
+         with a person silhouette (head + shoulders) rendered in the knockout
+         color so it reads as negative space against the surfaceVariant tile it
+         sits on. Two-tone like ic_desent_logo: body tracks the theme via
+         desent_logo_body (light=classic blue, dark=amber); the person tracks
+         the tile via avatar_placeholder_void (light/dark surfaceVariant).
+         Mark is inset ~10% (group scale 0.8 about the center) so the slot's
+         28% rounded corners never clip the bubble silhouette. -->
+    <group
+        android:scaleX="0.8"
+        android:scaleY="0.8"
+        android:translateX="10"
+        android:translateY="10">
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M16,13 h68 a6,6 0 0 1 6,6 v52 a6,6 0 0 1 -6,6 h-68 a6,6 0 0 1 -6,-6 v-52 a6,6 0 0 1 6,-6 z" />
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M10,77 h14 v6 h-14 z" />
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M10,83 h9 v4 h-9 z" />
+        <!-- Person: head circle (50,36) r10, shoulders dome from (30,71) to
+             (70,71) peaking at (50,51) — rises from the bubble's bottom edge. -->
+        <path
+            android:fillColor="@color/avatar_placeholder_void"
+            android:pathData="M40,36 a10,10 0 1 0 20,0 a10,10 0 1 0 -20,0 z" />
+        <path
+            android:fillColor="@color/avatar_placeholder_void"
+            android:pathData="M30,71 a20,20 0 0 1 40,0 z" />
+    </group>
+</vector>

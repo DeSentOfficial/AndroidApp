@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.DeSent" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/desent_amber</item>
+        <item name="colorPrimaryDark">@color/desent_void</item>
+        <item name="colorAccent">@color/desent_nostr_teal</item>
+        <item name="android:statusBarColor">@color/desent_void</item>
+        <item name="android:navigationBarColor">@color/desent_void</item>
+        <item name="android:windowBackground">@color/desent_void</item>
+    </style>
+
+    <style name="Theme.DeSent" parent="Base.Theme.DeSent" />
+
+    <style name="Theme.DeSent.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!-- Android 12+ core SplashScreen starting theme. Shows the DeSent logo on
+         a theme-matched background from frame 1, then hands off to NoActionBar
+         (which the Compose DeSentTheme recolors at runtime). Background and logo
+         colors are night-qualified (values-night/colors.xml). -->
+    <style name="Theme.DeSent.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/splash_background</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/ic_splash_logo</item>
+        <item name="windowSplashScreenIconBackgroundColor">@color/splash_background</item>
+        <item name="postSplashScreenTheme">@style/Theme.DeSent.NoActionBar</item>
+    </style>
+</resources>

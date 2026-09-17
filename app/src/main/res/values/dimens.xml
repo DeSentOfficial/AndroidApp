@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="padding_small">8dp</dimen>
+    <dimen name="padding_medium">16dp</dimen>
+    <dimen name="padding_large">24dp</dimen>
+    <dimen name="padding_extra_large">32dp</dimen>
+    
+    <dimen name="spacing_small">4dp</dimen>
+    <dimen name="spacing_medium">8dp</dimen>
+    <dimen name="spacing_large">16dp</dimen>
+    
+    <dimen name="profile_picture_size_small">32dp</dimen>
+    <dimen name="profile_picture_size_medium">48dp</dimen>
+    <dimen name="profile_picture_size_large">64dp</dimen>
+    
+    <dimen name="status_icon_size">20dp</dimen>
+    <dimen name="star_icon_size">24dp</dimen>
+    
+    <dimen name="elevation_small">2dp</dimen>
+    <dimen name="elevation_medium">4dp</dimen>
+    <dimen name="elevation_large">8dp</dimen>
+    
+    <dimen name="corner_radius_small">8dp</dimen>
+    <dimen name="corner_radius_medium">12dp</dimen>
+    <dimen name="corner_radius_large">16dp</dimen>
+    
+    <dimen name="min_touch_target">48dp</dimen>
+</resources>

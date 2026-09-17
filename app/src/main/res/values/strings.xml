@@ -1,0 +1,124 @@
+<resources>
+    <string name="app_name">DeSent</string>
+    
+    <!-- Login Screen -->
+    
+    <!-- Main Screen -->
+    
+    <!-- Navigation -->
+    
+    <!-- Settings -->
+    <string name="settings_about">About</string>
+    
+
+    <!-- About (branding) -->
+    <string name="about_made_by">Made by InexorableWeb</string>
+    <string name="about_website">desent.xyz</string>
+    <string name="about_version">Version</string>
+    <string name="about_copyright">© 2026 InexorableWeb</string>
+    
+    <!-- DMs -->
+    
+    <!-- Widget -->
+    <string name="widget_save">Save</string>
+
+    <!-- Notes Widget -->
+    <string name="widget_notes_title">DeSent Notes</string>
+    <string name="widget_notes_description">Quick access to your private notes</string>
+    <string name="widget_notes_empty">No notes yet</string>
+    <string name="widget_notes_mode_recent">Recent notes</string>
+    <string name="widget_notes_mode_favorites">Favorite notes</string>
+
+    <!-- Calendar Widget -->
+    <string name="widget_calendar_title">DeSent Calendar</string>
+    <string name="widget_calendar_description">Your Nostr calendar with day, week, and month views</string>
+    <string name="widget_calendar_empty">No events</string>
+    <string name="widget_calendar_view_day">Day</string>
+    <string name="widget_calendar_view_week">Week</string>
+    <string name="widget_calendar_view_month">Month</string>
+    <string name="widget_calendar_day_abbr">D</string>
+    <string name="widget_calendar_week_abbr">W</string>
+    <string name="widget_calendar_month_abbr">M</string>
+    <string name="widget_calendar_today">Today</string>
+
+    <!-- Zap / Balance Widgets -->
+
+    <!-- NFC HCE -->
+    
+    <!-- Common -->
+    <string name="cancel">Cancel</string>
+    
+    <!-- Signing Service -->
+    <string name="sign_request_title">Sign Request</string>
+    <string name="sign_request_message">An app is requesting your signature</string>
+    <string name="sign_approve">Approve</string>
+    <string name="sign_deny">Deny</string>
+
+    <!-- NIP-46 Remote Signing -->
+    <string name="nip46_settings_title">Remote signing</string>
+    <string name="nip46_settings_subtitle">Use this phone to sign Nostr events for your other devices and apps.</string>
+    <string name="nip46_view_only_hint">Switch to this account to pair new devices or share its bunker code.</string>
+
+    <!-- Account switcher per-account section -->
+    <string name="account_edit_row">Account details</string>
+    <string name="account_edit_subtitle">Profile, keys, and sign-out.</string>
+    <string name="account_bunker_connections">Bunker connections</string>
+    <string name="account_bunker_connections_subtitle">Devices and apps signed in via remote signing.</string>
+    <string name="account_backup_row">Account backup</string>
+    <string name="pgp_key_row_title">PGP Encryption</string>
+    <string name="pgp_key_row_subtitle">Manage this account\u2019s encryption key.</string>
+    <string name="account_backup_subtitle">Export this account encrypted to a file.</string>
+    <string name="switch_to_this_account">Switch to this account</string>
+    <string name="account_active_label">Active</string>
+
+    <!-- Login-security alerts (kind-1010 direction "security" + kind-30079 mode) -->
+    <string name="security_alerts_title">Security alerts</string>
+    <string name="security_alerts_subtitle">Sign-in alerts for your DeSent account.</string>
+    <string name="nip46_pair_new_device">Pair new device</string>
+    <string name="nip46_section_active">Active</string>
+    <string name="nip46_section_expired">Expired</string>
+    <string name="nip46_no_pairings">No paired devices yet</string>
+    <string name="nip46_pair_title">Pairing request</string>
+    <string name="nip46_pair_wants_to">wants to sign Nostr events on your behalf</string>
+    <string name="nip46_pair_profile_label">Permission profile</string>
+    <string name="nip46_pair_duration_label">Pair for</string>
+    <string name="nip46_pair_duration_5min">5 minutes</string>
+    <string name="nip46_pair_duration_1hour">1 hour</string>
+    <string name="nip46_pair_duration_1day">1 day</string>
+    <string name="nip46_pair_duration_always">Until revoked</string>
+    <string name="nip46_pair_approve">Approve</string>
+    <string name="nip46_pair_cancel">Cancel</string>
+    <string name="nip46_sign_title">Sign request</string>
+    <string name="nip46_sign_approve">Approve</string>
+    <string name="nip46_sign_deny">Deny</string>
+    <string name="nip46_sign_timeout">Auto-denied (2 min timeout)</string>
+    <string name="nip46_sign_always_allow">Always allow %1$s for this app</string>
+    <string name="nip46_pair_relays_label">Relays used by this app</string>
+    <string name="nip46_pair_external_relay_warning">External app: this uses the standard NIP-46 transport. Who talks to whom is visible to the relay operators above — but not what is signed or said.</string>
+    <string name="nip46_pair_desent_relay_note">DeSent private transport: requests are wrapped so only the recipient is visible.</string>
+    <string name="nip46_show_bunker_code">Show my bunker code</string>
+    <string name="nip46_bunker_code_title">Bunker code</string>
+    <string name="nip46_bunker_code_hint">Show this QR (or copy the code) to the app that should use this phone as its signer. It works with Amethyst and any app that supports remote signing.</string>
+    <string name="nip46_bunker_code_copy">Copy bunker code</string>
+    <string name="nip46_bunker_code_regenerate">Regenerate code</string>
+    <string name="nip46_bunker_code_security">The code is single-use and expires in 10 minutes. Only share it with apps you trust — approving a pairing lets them ask this phone to sign as you.</string>
+    <string name="nip46_detail_revoke">Revoke pairing</string>
+    <string name="nip46_detail_revoke_confirm">Revoke pairing with %1$s? They will need to re-pair to sign again.</string>
+
+    <!-- Shared QR scanner -->
+    <string name="qr_scan_permission_rationale">Camera permission is needed to scan the QR code.</string>
+
+    <!-- Tracking-pixel detection (email body banner + status chip) -->
+    <string name="tracking_pixel_banner_single">Tracking pixel detected</string>
+    <string name="tracking_pixel_banner_multiple">%1$d tracking pixels detected</string>
+    <string name="tracking_pixel_banner_caption">The sender can see when you open this email</string>
+    <string name="tracking_pixel_chip">👁 Tracking pixels</string>
+
+    <!-- Splash screen fortune-cookie taglines; one is picked at random per launch. -->
+    <string-array name="splash_taglines">
+        <item>built on nostr</item>
+        <item>email encrypted</item>
+        <item>personal productivity</item>
+        <item>back to earth</item>
+    </string-array>
+</resources>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Email attachments downloaded by AttachmentDownloader to filesDir/attachments -->
+    <files-path
+        name="attachments"
+        path="attachments/" />
+</paths>

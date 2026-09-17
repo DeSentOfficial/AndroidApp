@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    
+    <!-- DeSent Brand Colors -->
+    <color name="desent_amber">#FFB300</color>
+    <color name="desent_void">#0D0D1A</color>
+    <color name="desent_deep_navy">#1A1A2E</color>
+    <color name="desent_slate">#2A2A3E</color>
+    <color name="desent_nostr_teal">#00C8B4</color>
+    <color name="desent_warm_white">#F0F0E8</color>
+    <color name="desent_mid_gray">#888899</color>
+    <color name="desent_signal_red">#FF3B30</color>
+
+    <!-- DeSent logo mark (ic_desent_logo). Two-tone so the pixel "DS" reads as
+         negative space against the active background. Overridden in values-night. -->
+    <color name="desent_logo_body">#0066CC</color>   <!-- light: classic blue -->
+    <color name="desent_logo_pixel">#FFFFFF</color>  <!-- light: matches bg -->
+
+    <!-- Avatar placeholder (ic_avatar_placeholder): person knockout color.
+         Matches surfaceVariant so the silhouette reads as negative space
+         against the AvatarPlaceholder tile. Overridden in values-night. -->
+    <color name="avatar_placeholder_void">#E3E8EC</color>
+
+    <!-- OS cold-start splash background (Android 12+ SplashScreen API).
+         Night-qualified so frame 1 matches the active theme. -->
+    <color name="splash_background">#FFFFFF</color>
+    
+    <!-- Light theme colors (aligned to desent.xyz tokens.css: classic blue #0066CC) -->
+    <color name="md_theme_light_primary">#0066CC</color>
+    <color name="md_theme_light_onPrimary">#FFFFFF</color>
+    <color name="md_theme_light_primaryContainer">#D3E0F2</color>
+    <color name="md_theme_light_onPrimaryContainer">#0E2240</color>
+    <color name="md_theme_light_secondary">#4E6A99</color>
+    <color name="md_theme_light_onSecondary">#FFFFFF</color>
+    <color name="md_theme_light_secondaryContainer">#D3E0F2</color>
+    <color name="md_theme_light_onSecondaryContainer">#0E2240</color>
+    <color name="md_theme_light_tertiary">#5B7A8C</color>
+    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_tertiaryContainer">#D6E4EC</color>
+    <color name="md_theme_light_onTertiaryContainer">#10242E</color>
+    <color name="md_theme_light_error">#C81E1E</color>
+    <color name="md_theme_light_errorContainer">#FFDAD6</color>
+    <color name="md_theme_light_onError">#FFFFFF</color>
+    <color name="md_theme_light_onErrorContainer">#410002</color>
+    <color name="md_theme_light_background">#FFFFFF</color>
+    <color name="md_theme_light_onBackground">#0F1419</color>
+    <color name="md_theme_light_surface">#F6F7F8</color>
+    <color name="md_theme_light_onSurface">#0F1419</color>
+    <color name="md_theme_light_surfaceVariant">#E3E8EC</color>
+    <color name="md_theme_light_onSurfaceVariant">#5B6770</color>
+    <color name="md_theme_light_outline">#8A949C</color>
+    <color name="md_theme_light_inverseOnSurface">#EEF1F4</color>
+    <color name="md_theme_light_inverseSurface">#2C313A</color>
+    <color name="md_theme_light_inversePrimary">#7CCBB7</color>
+    
+    <!-- Dark theme colors -->
+    <color name="md_theme_dark_primary">#FFB300</color>
+    <color name="md_theme_dark_onPrimary">#0D0D1A</color>
+    <color name="md_theme_dark_primaryContainer">#FFB300</color>
+    <color name="md_theme_dark_onPrimaryContainer">#0D0D1A</color>
+    <color name="md_theme_dark_secondary">#00C8B4</color>
+    <color name="md_theme_dark_onSecondary">#0D0D1A</color>
+    <color name="md_theme_dark_secondaryContainer">#1A1A2E</color>
+    <color name="md_theme_dark_onSecondaryContainer">#F0F0E8</color>
+    <color name="md_theme_dark_tertiary">#FFB300</color>
+    <color name="md_theme_dark_onTertiary">#0D0D1A</color>
+    <color name="md_theme_dark_tertiaryContainer">#FFB300</color>
+    <color name="md_theme_dark_onTertiaryContainer">#0D0D1A</color>
+    <color name="md_theme_dark_error">#FF3B30</color>
+    <color name="md_theme_dark_errorContainer">#93000A</color>
+    <color name="md_theme_dark_onError">#690005</color>
+    <color name="md_theme_dark_onErrorContainer">#FFDAD6</color>
+    <color name="md_theme_dark_background">#0D0D1A</color>
+    <color name="md_theme_dark_onBackground">#F0F0E8</color>
+    <color name="md_theme_dark_surface">#1A1A2E</color>
+    <color name="md_theme_dark_onSurface">#F0F0E8</color>
+    <color name="md_theme_dark_surfaceVariant">#2A2A3E</color>
+    <color name="md_theme_dark_onSurfaceVariant">#888899</color>
+    <color name="md_theme_dark_outline">#888899</color>
+    <color name="md_theme_dark_inverseOnSurface">#F0F0E8</color>
+    <color name="md_theme_dark_inverseSurface">#1A1A2E</color>
+    <color name="md_theme_dark_inversePrimary">#FFB300</color>
+</resources>

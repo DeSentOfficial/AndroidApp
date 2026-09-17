@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/widget_background">
+
+    <LinearLayout
+        android:id="@+id/notes_widget_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="6dp"
+        android:background="@color/md_theme_light_surfaceVariant">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/ic_note"
+            android:contentDescription="@null"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+
+        <TextView
+            android:id="@+id/notes_widget_last_reload"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Never"
+            android:textColor="@color/md_theme_light_onSurfaceVariant"
+            android:textSize="11sp"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <ImageView
+            android:id="@+id/notes_widget_add"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="8dp"
+            android:src="@drawable/ic_add"
+            android:contentDescription="New note"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+
+        <ImageView
+            android:id="@+id/notes_widget_refresh"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_refresh"
+            android:contentDescription="Refresh"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:tint="@color/md_theme_light_onSurfaceVariant"
+            tools:ignore="UseAppTint" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/notes_widget_list"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:divider="@null"
+        android:dividerHeight="0dp"
+        android:paddingVertical="4dp" />
+
+    <TextView
+        android:id="@+id/notes_widget_empty_text"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:text="@string/widget_notes_empty"
+        android:textColor="@color/md_theme_light_onSurfaceVariant"
+        android:textSize="13sp"
+        android:visibility="gone" />
+
+</LinearLayout>

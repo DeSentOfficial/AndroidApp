@@ -1,0 +1,35 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- DeSent brand glyph (matches ic_desent_logo) scaled into the adaptive-icon
+         safe zone so the rounded body + tail survive both squircle and circular
+         launcher masks. Colors reference night-qualified @color resources so the
+         launcher icon tracks the SYSTEM dark/light theme:
+           dark  = amber body / void pixels
+           light = blue body  / white pixels -->
+    <group
+        android:scaleX="0.72"
+        android:scaleY="0.72"
+        android:translateX="18"
+        android:translateY="20">
+
+        <!-- Body: rounded speech-bubble plate + two tail tabs. -->
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M16,13 h68 a6,6 0 0 1 6,6 v52 a6,6 0 0 1 -6,6 h-68 a6,6 0 0 1 -6,-6 v-52 a6,6 0 0 1 6,-6 z" />
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M10,77 h14 v6 h-14 z" />
+        <path
+            android:fillColor="@color/desent_logo_body"
+            android:pathData="M10,83 h9 v4 h-9 z" />
+
+        <!-- Pixel "DS" letterforms. -->
+        <path
+            android:fillColor="@color/desent_logo_pixel"
+            android:pathData="M29.65,33.80h2.8v2.8h-2.8zM32.45,33.80h2.8v2.8h-2.8zM35.25,33.80h2.8v2.8h-2.8zM38.05,33.80h2.8v2.8h-2.8zM29.65,36.60h2.8v2.8h-2.8zM32.45,36.60h2.8v2.8h-2.8zM40.85,36.60h2.8v2.8h-2.8zM43.65,36.60h2.8v2.8h-2.8zM29.65,39.40h2.8v2.8h-2.8zM32.45,39.40h2.8v2.8h-2.8zM43.65,39.40h2.8v2.8h-2.8zM46.45,39.40h2.8v2.8h-2.8zM29.65,42.20h2.8v2.8h-2.8zM32.45,42.20h2.8v2.8h-2.8zM43.65,42.20h2.8v2.8h-2.8zM46.45,42.20h2.8v2.8h-2.8zM29.65,45.00h2.8v2.8h-2.8zM32.45,45.00h2.8v2.8h-2.8zM43.65,45.00h2.8v2.8h-2.8zM46.45,45.00h2.8v2.8h-2.8zM29.65,47.80h2.8v2.8h-2.8zM32.45,47.80h2.8v2.8h-2.8zM43.65,47.80h2.8v2.8h-2.8zM46.45,47.80h2.8v2.8h-2.8zM29.65,50.60h2.8v2.8h-2.8zM32.45,50.60h2.8v2.8h-2.8zM40.85,50.60h2.8v2.8h-2.8zM43.65,50.60h2.8v2.8h-2.8zM29.65,53.40h2.8v2.8h-2.8zM32.45,53.40h2.8v2.8h-2.8zM35.25,53.40h2.8v2.8h-2.8zM38.05,53.40h2.8v2.8h-2.8zM53.55,33.80h2.8v2.8h-2.8zM56.35,33.80h2.8v2.8h-2.8zM59.15,33.80h2.8v2.8h-2.8zM61.95,33.80h2.8v2.8h-2.8zM64.75,33.80h2.8v2.8h-2.8zM50.75,36.60h2.8v2.8h-2.8zM53.55,36.60h2.8v2.8h-2.8zM64.75,36.60h2.8v2.8h-2.8zM67.55,36.60h2.8v2.8h-2.8zM50.75,39.40h2.8v2.8h-2.8zM53.55,39.40h2.8v2.8h-2.8zM53.55,42.20h2.8v2.8h-2.8zM56.35,42.20h2.8v2.8h-2.8zM59.15,42.20h2.8v2.8h-2.8zM61.95,42.20h2.8v2.8h-2.8zM59.15,45.00h2.8v2.8h-2.8zM61.95,45.00h2.8v2.8h-2.8zM64.75,45.00h2.8v2.8h-2.8zM64.75,47.80h2.8v2.8h-2.8zM67.55,47.80h2.8v2.8h-2.8zM50.75,50.60h2.8v2.8h-2.8zM53.55,50.60h2.8v2.8h-2.8zM64.75,50.60h2.8v2.8h-2.8zM67.55,50.60h2.8v2.8h-2.8zM53.55,53.40h2.8v2.8h-2.8zM56.35,53.40h2.8v2.8h-2.8zM59.15,53.40h2.8v2.8h-2.8zM61.95,53.40h2.8v2.8h-2.8zM64.75,53.40h2.8v2.8h-2.8z" />
+    </group>
+</vector>

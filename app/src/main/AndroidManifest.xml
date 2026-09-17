@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Network permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    
+    <!-- Biometric authentication -->
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    
+    <!-- Camera for QR scanning -->
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- Storage for profile picture selection -->
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="32" />
+    
+    <!-- Foreground service for background relay keep-alive -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_SPECIAL_USE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- Notifications (Android 13+) for emails / followers -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    
+    <!-- Widget -->
+
+    <application
+        android:name=".DeSentApplication"
+        android:allowBackup="false"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.DeSent"
+        android:usesCleartextTraffic="false"
+        tools:targetApi="31">
+
+        <!-- Branding: maker + official website -->
+        <meta-data
+            android:name="xyz.desent.app.MAKER"
+            android:value="InexorableWeb" />
+        <meta-data
+            android:name="xyz.desent.app.WEBSITE"
+            android:value="https://desent.xyz" />
+
+        <!-- Main Activity -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.DeSent.Starting"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            
+            <!-- Nostr URI Scheme (NIP-21) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="nostr" />
+            </intent-filter>
+            
+            <!-- DeSent Custom Scheme -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="desent" />
+            </intent-filter>
+            
+            <!-- HTTPS for web links -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="desent.xyz" />
+            </intent-filter>
+
+            <!-- Invite links: https://desent.xyz/register?ref=CODE.
+                 autoVerify requires assetlinks.json on the host; publish it at
+                 https://desent.xyz/.well-known/assetlinks.json so these links
+                 open the app instead of the web wizard. -->
+            <intent-filter android:autoVerify="true">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data android:scheme="https" android:host="desent.xyz" android:pathPrefix="/register" />
+            </intent-filter>
+
+            <!-- Encrypted account backup file (.desentbackup) -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\.desentbackup" />
+                <data android:pathPattern=".*\..*\.desentbackup" />
+                <data android:pathPattern=".*\..*\..*\.desentbackup" />
+            </intent-filter>
+
+            <!-- Markdown documents: proper MIME types (RFC 7763). The user
+                 grants "always open with" from the system chooser; Android
+                 offers no API for an app to set itself as the default. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="text/markdown" />
+                <data android:mimeType="text/x-markdown" />
+            </intent-filter>
+            <!-- Markdown by extension: many file managers report .md files as
+                 application/octet-stream, so match on the name. Kept separate
+                 from the backup filter; routing disambiguates by extension. -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:scheme="content" />
+                <data android:scheme="file" />
+                <data android:mimeType="application/octet-stream" />
+                <data android:pathPattern=".*\.md" />
+                <data android:pathPattern=".*\..*\.md" />
+                <data android:pathPattern=".*\..*\..*\.md" />
+                <data android:pathPattern=".*\.markdown" />
+                <data android:pathPattern=".*\..*\.markdown" />
+                <data android:pathPattern=".*\..*\..*\.markdown" />
+            </intent-filter>
+
+            <!-- Share-to-upload on the Files screen (END-23 user files):
+                 any app can share files into DeSent; they are encrypted with
+                 the user's key and uploaded to their private file storage. -->
+            <intent-filter android:label="Upload to DeSent Files">
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+            <intent-filter android:label="Upload to DeSent Files">
+                <action android:name="android.intent.action.SEND_MULTIPLE" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="*/*" />
+            </intent-filter>
+        </activity>
+
+        <!-- Notes Widget -->
+        <receiver
+            android:name=".widget.NotesWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_notes_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="xyz.desent.widget.ACTION_REFRESH_NOTES_WIDGET" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/notes_widget_info" />
+        </receiver>
+
+        <!-- Notes Widget Configuration Activity -->
+        <activity
+            android:name=".widget.NotesWidgetConfigureActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Calendar Widget -->
+        <receiver
+            android:name=".widget.CalendarWidgetProvider"
+            android:exported="true"
+            android:label="@string/widget_calendar_title">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+                <action android:name="xyz.desent.widget.ACTION_CALENDAR_SET_VIEW" />
+                <action android:name="xyz.desent.widget.ACTION_CALENDAR_NAV_PREV" />
+                <action android:name="xyz.desent.widget.ACTION_CALENDAR_NAV_NEXT" />
+                <action android:name="xyz.desent.widget.ACTION_CALENDAR_TODAY" />
+                <action android:name="xyz.desent.widget.ACTION_CALENDAR_REFRESH" />
+                <!-- Redraw on midnight / clock / timezone / locale changes -->
+                <action android:name="android.intent.action.DATE_CHANGED" />
+                <action android:name="android.intent.action.TIME_SET" />
+                <action android:name="android.intent.action.TIMEZONE_CHANGED" />
+                <action android:name="android.intent.action.LOCALE_CHANGED" />
+            </intent-filter>
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/calendar_widget_info" />
+        </receiver>
+
+        <!-- Calendar Widget Configuration Activity -->
+        <activity
+            android:name=".widget.CalendarWidgetConfigureActivity"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_CONFIGURE" />
+            </intent-filter>
+        </activity>
+
+        <!-- Wear OS Data Layer: respond to the watch's config/inbox requests -->
+        <service
+            android:name=".wear.WearSyncService"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.wearable.MESSAGE_RECEIVED" />
+                <data android:scheme="wear" android:host="*" android:pathPrefix="/desent" />
+            </intent-filter>
+        </service>
+
+        <!-- Notes Widget RemoteViews Service -->
+        <service
+            android:name=".widget.NotesRemoteViewsService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- Calendar Widget RemoteViews Service (agenda list + month grid) -->
+        <service
+            android:name=".widget.CalendarWidgetRemoteViewsService"
+            android:exported="false"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
+
+        <!-- Foreground service that keeps the relay WebSockets alive while the
+             app is backgrounded, so email/follower notifications keep firing.
+             Opt-in via Settings ("Keep running in background"). specialUse,
+             not dataSync: Android 15 caps dataSync services at 6h per 24h,
+             which a permanent keep-alive cannot honor. -->
+        <service
+            android:name=".service.NostrForegroundService"
+            android:exported="false"
+            android:foregroundServiceType="specialUse">
+            <property
+                android:name="android.app.PROPERTY_SPECIAL_USE_FGS_SUBTYPE"
+                android:value="Keeps a persistent WebSocket connection to the user's designated Nostr relay so incoming email and follower notifications are delivered in real time while the app is backgrounded. The app has no push service (no FCM); closing the connection stops delivery." />
+        </service>
+
+        <!-- FileProvider for sharing/opening downloaded email attachments -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+
+    </application>
+
+</manifest>

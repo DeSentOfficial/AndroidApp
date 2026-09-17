@@ -1,0 +1,45 @@
+repository: https://github.com/DeSentOfficial/AndroidApp
+release_source: https://github.com/DeSentOfficial/AndroidApp/releases
+match: ^DeSent-v[0-9.]+\.apk$
+pubkey: npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xn0v6ua4
+name: DeSent
+summary: Private email and personal productivity on Nostr
+description: |
+  DeSent — a play on *desent* (decentralized via Nostr) and *sent* (email) — is a
+  privacy-focused Android app for private email and personal productivity.
+
+  - **Private email** — Nostr-native email with a client-side spam filter
+  - **Encrypted calendar** — NIP-52 calendar with sharing and RSVPs
+  - **Private notes & contacts** — NIP-78 self-encrypted private storage
+  - **File storage** — encrypted blob storage on desent.xyz
+  - **Secure key management** — keys in the Android Keystore with biometric access
+  - **NIP-46 remote signing** — use this phone as a bunker for your other devices
+  - **Wear OS companion** — watch app synced from the phone
+
+  Accounts sync exclusively through the DeSent service relay at `wss://desent.xyz`;
+  third-party relays are only ever contacted read-only, briefly, to fetch an
+  existing Nostr user's profile during login.
+tags:
+  - email
+  - nostr
+  - privacy
+  - encryption
+  - calendar
+  - wear-os
+license: MIT
+website: https://desent.xyz
+supported_nips:
+  - "01"
+  - "05"
+  - "17"
+  - "21"
+  - "42"
+  - "44"
+  - "46"
+  - "52"
+  - "65"
+  - "78"
+  - "98"
+min_allowed_version_code: 1
+metadata_sources:
+  - github

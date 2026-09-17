@@ -1,0 +1,50 @@
+Third-party software bundled with DeSent.
+=========================================
+
+Each entry below ships inside app/src/main/assets/lists/. The DeSent spam
+filter (see refs/SPAM_FILTER_REFERENCE.md) loads these at first run so the
+filter is useful before any NIP-51 manifest is fetched and before the user
+trains the Bayesian layer.
+
+--------------------------------------------------------------------------------
+1. disposable_domains.txt
+--------------------------------------------------------------------------------
+
+Source:       https://github.com/ivolo/disposable-email-domains
+License:      MIT
+Copyright:    (c) ivolo and contributors
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software ...
+
+The above notice is included in full in the repository. The file shipped here
+is a curated high-signal subset; the release pipeline may replace it with the
+full upstream list.
+
+--------------------------------------------------------------------------------
+2. spamassassin_rules.json
+--------------------------------------------------------------------------------
+
+Source:       https://github.com/apache/spamassassin (rules/*.cf)
+License:      Apache License, Version 2.0
+Copyright:    (c) The Apache Software Foundation
+
+Derived from the SpamAssassin rule corpus. Curated to a portable, high-signal
+subset; network-dependent rules (URIDNSBL, RBL lookups, Pyzor, Razör) are
+deliberately excluded because they require remote lookups incompatible with
+client-side-only processing.
+
+Licensed under the Apache License, Version 2.0 (the "License"); you may not
+use this file except in compliance with the License. You may obtain a copy of
+the License at:
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+License for the specific language governing permissions and limitations under
+the License.

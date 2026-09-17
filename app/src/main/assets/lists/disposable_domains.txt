@@ -1,0 +1,53 @@
+# DeSent disposable / temporary email domain seed list.
+#
+# Source: derived from `ivolo/disposable-email-domains` (MIT) — see LICENSES.
+# This is a curated high-signal subset (~well-known disposable providers).
+# The full upstream list (~100k entries) should be dropped into this file at
+# build time by the release pipeline; the client loads whatever is present.
+#
+# One lowercased domain per line. Lines beginning with `#` are comments.
+10minutemail.com
+10minutemail.net
+12minutemail.com
+1secmail.com
+1secmail.org
+1secmail.net
+30minutemail.com
+33mail.com
+dispostable.com
+dropmail.me
+emailondeck.com
+fakemail.net
+fakeinbox.com
+guerrillamail.com
+guerrillamail.net
+guerrillamail.org
+incognitomail.com
+maildrop.cc
+mailinator.com
+mailinator.net
+mailnesia.com
+mintemail.com
+mohmal.com
+momentmail.com
+mytemp.email
+nepwk.com
+nervmich.net
+nervtmich.net
+netmails.com
+nincsmail.com
+nyrmail.com
+o2lk.com
+ohi.tw
+sharklasers.com
+spam4.me
+temp-mail.org
+tempmail.com
+tempmailo.com
+throwawaymail.com
+trbvm.com
+trashmail.com
+trashmail.me
+yopmail.com
+yopmail.net
+zetmail.com

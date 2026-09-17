@@ -1,0 +1,36 @@
+{
+  "_comment": "Curated high-signal spam patterns adapted from SpamAssassin rules (Apache-2.0). See LICENSES. Patterns are authored lowercase and evaluated case-insensitively by the client (Pattern.CASE_INSENSITIVE on Android; the i flag on web) — do NOT use Java's inline (?i). Stick to syntax common to java.util.regex and JS RegExp.",
+  "subject_patterns": [
+    "\\bviagra\\b",
+    "\\bcialis\\b",
+    "\\blottery\\s+winn",
+    "\\bclaim\\s+your\\s+prize\\b",
+    "\\b{2,}\\bcongrat",
+    "100%\\s+free",
+    "act\\s+now",
+    "\\burgent\\s+action\\s+required\\b",
+    "\\blimited\\s+time\\s+offer\\b",
+    "\\bmake\\s+money\\s+(fast|online|from\\s+home)\\b",
+    "\\bdouble\\s+your\\b",
+    "\\bearn\\s+\\$?\\d{3,}\\s+(a|per)\\s+(day|week|month)\\b",
+    "\\bweight\\s+loss\\b",
+    "\\bbeware\\s+(of|the)\\b",
+    "\\brisk[- ]?free\\b"
+  ],
+  "body_patterns": [
+    "\\bclick\\s+here\\s+to\\s+unsubscribe\\b.{0,40}\\b(visit|buy|order)\\b",
+    "\\b(dear|hello)\\s+(friend|winner|sir|madam)\\b",
+    "\\byou\\s+have\\s+(been|won|qualified)\\b",
+    "\\b(bitcoin|crypto)\\s+(giveaway|doubl)\\b",
+    "\\btransfer\\s+of\\s+\\(?usd\\$?\\d{4,}",
+    "\\b(this\\s+is\\s+not\\s+a\\s+scam|100%\\s+legit|guaranteed)\\b",
+    "\\bshipping\\s+confirmation\\b.{0,80}\\b(track|click|verify)\\b",
+    "\\binvoice\\s+#?\\d{3,}.{0,80}\\b(attachment|download|click)\\b"
+  ],
+  "high_signal_keywords": [
+    "viagra", "cialis", "lottery", "winner", "congratulations",
+    "bitcoin", "crypto", "giveaway", "loan", "casino", "pharmacy",
+    "viagra", "investment", "profits", "guaranteed", "unsubscribe",
+    "free", "trial", "limited", "offer", "click", "buy"
+  ]
+}

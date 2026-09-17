@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark overrides for the DeSent logo mark (amber body, void pixels).
+         Tracks the app theme via AppCompatDelegate.setDefaultNightMode. -->
+    <color name="desent_logo_body">#FFB300</color>
+    <color name="desent_logo_pixel">#0D0D1A</color>
+
+    <!-- Avatar placeholder person knockout: dark surfaceVariant tile. -->
+    <color name="avatar_placeholder_void">#2A2A3E</color>
+
+    <!-- OS cold-start splash background (dark = Void). -->
+    <color name="splash_background">#0D0D1A</color>
+</resources>
