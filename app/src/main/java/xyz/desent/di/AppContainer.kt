@@ -467,7 +467,8 @@ class AppContainer(val context: Context) {
             nostrLinkClient,
             accountRepository,
             accountDao,
-            switchAccountUseCase
+            switchAccountUseCase,
+            refreshOwnProfileUseCase
         )
     }
 
@@ -661,6 +662,14 @@ class AppContainer(val context: Context) {
         xyz.desent.domain.usecase.RefreshPrimaryAddressUseCase(
             accountDao, secureKeyManager, registrationRepository
         )
+    }
+
+    /**
+     * Own kind-0 profile refresh (login / cold-launch hooks) — runs on its
+     * own scope so it survives ViewModel teardown (see the use case KDoc).
+     */
+    val refreshOwnProfileUseCase: xyz.desent.domain.usecase.RefreshOwnProfileUseCase by lazy {
+        xyz.desent.domain.usecase.RefreshOwnProfileUseCase(nostrRepository)
     }
 
     // ==================== CUSTODIAL ACCOUNTS (username & password) ====================

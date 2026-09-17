@@ -20,6 +20,7 @@ import xyz.desent.domain.repository.RelayRepository
 import xyz.desent.domain.repository.UserRepository
 import xyz.desent.data.registration.NostrLinkClient
 import xyz.desent.domain.usecase.MediaUploadUseCase
+import xyz.desent.domain.usecase.RefreshOwnProfileUseCase
 import xyz.desent.domain.usecase.RegistrationUseCase
 import xyz.desent.domain.usecase.SwitchAccountUseCase
 import xyz.desent.util.ImageCompressor
@@ -54,7 +55,8 @@ class AuthRepositoryImpl(
     private val nostrLinkClient: NostrLinkClient,
     private val accountRepository: AccountRepository,
     private val accountDao: AccountDao,
-    private val switchAccountUseCase: SwitchAccountUseCase
+    private val switchAccountUseCase: SwitchAccountUseCase,
+    private val refreshOwnProfileUseCase: RefreshOwnProfileUseCase
 ) : AuthRepository {
 
     // Prevent multiple simultaneous reconnection attempts
@@ -117,6 +119,14 @@ class AuthRepositoryImpl(
             }
 
             activateSession()
+
+            // Refresh the own kind-0 profile with the same settled two-shot
+            // fetch (DeSent relay first, public bootstrap relays second) the
+            // account-switch path performs. Must run on a scope that outlives
+            // this call — the login screen is torn down mid-navigation, which
+            // is where the ViewModel-scoped fetch used to die. Non-blocking so
+            // login returns as soon as the email subscriptions are live.
+            refreshOwnProfileUseCase.launchInBackground(npub)
 
             Result.success(npub)
         } catch (e: Exception) {

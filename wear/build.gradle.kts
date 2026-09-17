@@ -17,8 +17,8 @@ android {
         minSdk = 26
         targetSdk = 36
         // Version-synced with the phone app — the pair ships together.
-        versionCode = 7
-        versionName = "1.0.7"
+        versionCode = 8
+        versionName = "1.0.8"
         vectorDrawables {
             useSupportLibrary = true
         }

@@ -16,7 +16,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import xyz.desent.crypto.Nip49
-import xyz.desent.data.repository.NostrRepository
 import xyz.desent.domain.repository.CustodialAccountRepository
 import xyz.desent.domain.usecase.AuthUseCase
 import xyz.desent.domain.usecase.RefreshPrimaryAddressUseCase
@@ -60,11 +59,10 @@ class LoginViewModelNcryptsecTest {
     @After
     fun tearDown() = Dispatchers.resetMain()
 
-    private fun makeVm(nostrRepository: NostrRepository = mockk(relaxed = true)) = LoginViewModel(
+    private fun makeVm() = LoginViewModel(
         authUseCase,
         registrationUseCase,
         custodialAccountRepository,
-        nostrRepository,
         refreshPrimaryAddressUseCase,
         mockk(relaxed = true),
         mockk(relaxed = true)
@@ -116,12 +114,9 @@ class LoginViewModelNcryptsecTest {
 
     @Test
     fun ncryptsecLogin_success_setsLoginSuccess_andClearsSecrets() = runTest(mainDispatcher) {
-        val nostrRepository = mockk<NostrRepository>()
-        coEvery { nostrRepository.fetchOwnProfileFromRelays(any(), any()) } returns
-            Result.success(Unit)
         coEvery { authUseCase.loginWithNcryptsec(ncryptsec, "key password", false, false) } returns
             Result.success("npub1abc")
-        val vm = makeVm(nostrRepository)
+        val vm = makeVm()
 
         vm.onNsecChange(ncryptsec)
         vm.onLogin()

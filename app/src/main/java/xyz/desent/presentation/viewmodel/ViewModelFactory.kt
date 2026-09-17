@@ -28,7 +28,6 @@ class ViewModelFactory(public val appContainer: AppContainer) : ViewModelProvide
                     appContainer.authUseCase,
                     appContainer.registrationUseCase,
                     appContainer.custodialAccountRepository,
-                    appContainer.nostrRepository,
                     appContainer.refreshPrimaryAddressUseCase,
                     appContainer.paymentsUseCase,
                     appContainer.aliasUseCase
@@ -41,7 +40,8 @@ class ViewModelFactory(public val appContainer: AppContainer) : ViewModelProvide
                     appContainer.nostrRepository,
                     appContainer.relayRepository,
                     appContainer.accountRepository,
-                    appContainer.refreshPrimaryAddressUseCase
+                    appContainer.refreshPrimaryAddressUseCase,
+                    appContainer.refreshOwnProfileUseCase
                 ) as T
             }
             SettingsViewModel::class.java -> {

@@ -30,6 +30,7 @@ import xyz.desent.domain.repository.CustodialAccountRepository
 import xyz.desent.domain.repository.RelayRepository
 import xyz.desent.domain.repository.UserRepository
 import xyz.desent.domain.usecase.MediaUploadUseCase
+import xyz.desent.domain.usecase.RefreshOwnProfileUseCase
 import xyz.desent.domain.usecase.RegistrationUseCase
 import xyz.desent.domain.usecase.SwitchAccountUseCase
 
@@ -58,6 +59,7 @@ class AuthRepositoryImplTest {
     private lateinit var accountRepository: AccountRepository
     private lateinit var accountDao: AccountDao
     private lateinit var switchAccountUseCase: SwitchAccountUseCase
+    private lateinit var refreshOwnProfileUseCase: RefreshOwnProfileUseCase
     private lateinit var context: Context
 
     private lateinit var repository: AuthRepositoryImpl
@@ -77,6 +79,7 @@ class AuthRepositoryImplTest {
         accountRepository = mockk(relaxed = true)
         accountDao = mockk(relaxed = true)
         switchAccountUseCase = mockk(relaxed = true)
+        refreshOwnProfileUseCase = mockk(relaxed = true)
         context = mockk(relaxed = true)
 
         // Result<T> is a value class, so relaxed mocks can't synthesize it —
@@ -129,7 +132,8 @@ class AuthRepositoryImplTest {
             nostrLinkClient = nostrLinkClient,
             accountRepository = accountRepository,
             accountDao = accountDao,
-            switchAccountUseCase = switchAccountUseCase
+            switchAccountUseCase = switchAccountUseCase,
+            refreshOwnProfileUseCase = refreshOwnProfileUseCase
         )
     }
 
@@ -149,6 +153,7 @@ class AuthRepositoryImplTest {
 
         assertTrue(result.isSuccess)
         assertSessionActivated()
+        assertOwnProfileRefreshNotLaunched()
     }
 
     @Test
@@ -212,6 +217,7 @@ class AuthRepositoryImplTest {
 
         assertTrue(result.isSuccess)
         assertSessionActivated()
+        assertOwnProfileRefreshNotLaunched()
         coVerifyOrder {
             nostrRepository.restoreIdentity()
             nostrRepository.publishUserProfile(
@@ -311,6 +317,10 @@ class AuthRepositoryImplTest {
 
         assertTrue(result.isSuccess)
         assertSessionActivated()
+        // The own-profile refresh must fire on the repository side — the
+        // login screen's ViewModel-scoped fetch is what used to lose the
+        // profile on first login.
+        verify(exactly = 1) { refreshOwnProfileUseCase.launchInBackground(NPUB) }
     }
 
     // ---- ncryptsec (NIP-49) login -------------------------------------------
@@ -332,6 +342,7 @@ class AuthRepositoryImplTest {
         // exactly the secret that was encrypted.
         assertEquals(Nip44Encryption.bytesToHex(rawKey), Bech32Utils.nsecToHex(nsecSlot.captured))
         assertSessionActivated()
+        verify(exactly = 1) { refreshOwnProfileUseCase.launchInBackground(NPUB) }
     }
 
     @Test
@@ -374,6 +385,14 @@ class AuthRepositoryImplTest {
             nostrRepository.restoreIdentity()
             nostrRepository.subscribeToGiftWraps()
         }
+    }
+
+    /**
+     * Creation flows publish their kind-0 locally at signup — no own-profile
+     * refresh is wanted there (the refresh is a login-only hook).
+     */
+    private fun assertOwnProfileRefreshNotLaunched() {
+        verify(exactly = 0) { refreshOwnProfileUseCase.launchInBackground(any()) }
     }
 
     private companion object {

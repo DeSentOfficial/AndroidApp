@@ -58,7 +58,6 @@ class LoginViewModelReferralTest {
             authUseCase,
             registrationUseCase,
             custodialRepo,
-            mockk(relaxed = true),
             refreshPrimaryAddressUseCase,
             mockk(relaxed = true),
             mockk(relaxed = true)

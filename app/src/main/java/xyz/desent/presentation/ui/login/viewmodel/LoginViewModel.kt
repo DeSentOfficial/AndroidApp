@@ -15,7 +15,6 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import xyz.desent.data.RelayConfig
 import xyz.desent.data.payments.model.PaymentsError
 import xyz.desent.data.registration.model.RegistrationError
 import xyz.desent.data.vanity.model.VanityError
@@ -34,7 +33,6 @@ import xyz.desent.domain.usecase.AuthUseCase
 import xyz.desent.domain.usecase.PaymentsUseCase
 import xyz.desent.domain.usecase.RefreshPrimaryAddressUseCase
 import xyz.desent.domain.usecase.RegistrationUseCase
-import xyz.desent.data.repository.NostrRepository
 import xyz.desent.crypto.Nip49
 import xyz.desent.presentation.ui.components.CheckoutUiState
 import xyz.desent.presentation.ui.components.formatSats
@@ -102,7 +100,6 @@ class LoginViewModel(
     private val authUseCase: AuthUseCase,
     private val registrationUseCase: RegistrationUseCase,
     private val custodialAccountRepository: CustodialAccountRepository,
-    private val nostrRepository: NostrRepository,
     private val refreshPrimaryAddressUseCase: RefreshPrimaryAddressUseCase,
     private val paymentsUseCase: PaymentsUseCase,
     private val aliasUseCase: AliasUseCase
@@ -391,17 +388,6 @@ class LoginViewModel(
                             isLoading = false,
                             isLoginSuccess = true
                         )
-                        // Pull the user's NIP-01 kind-0 profile from the public
-                        // profile relays (newest wins). Fire-and-forget: the relay
-                        // subscription persists on the WebSocket clients, so the
-                        // profile trickles into Room and the UI refreshes even if
-                        // this ViewModel is cleared on navigation.
-                        viewModelScope.launch {
-                            nostrRepository.fetchOwnProfileFromRelays(
-                                npub,
-                                RelayConfig.PUBLIC_PROFILE_RELAYS
-                            )
-                        }
                         // Cache the registered primary address right away —
                         // a fresh key-import has no kind-0 nip05 to derive it
                         // from, so the switcher would show "No address".
@@ -696,12 +682,6 @@ class LoginViewModel(
                             isLoginSuccess = true
                         )
                         viewModelScope.launch {
-                            nostrRepository.fetchOwnProfileFromRelays(
-                                npub,
-                                RelayConfig.PUBLIC_PROFILE_RELAYS
-                            )
-                        }
-                        viewModelScope.launch {
                             refreshPrimaryAddressUseCase.refreshOne(npub)
                         }
                     },
@@ -805,13 +785,6 @@ class LoginViewModel(
                 result.fold(
                     onSuccess = { loginResult ->
                         _uiState.value = _uiState.value.copy(isLoading = false)
-                        // Same fire-and-forget profile fetch as the key login.
-                        viewModelScope.launch {
-                            nostrRepository.fetchOwnProfileFromRelays(
-                                loginResult.npub,
-                                RelayConfig.PUBLIC_PROFILE_RELAYS
-                            )
-                        }
                         // Cache the registered primary address immediately
                         // (same rationale as the key login).
                         viewModelScope.launch {

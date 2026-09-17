@@ -1,24 +1,50 @@
 repository: https://github.com/DeSentOfficial/AndroidApp
 release_source: https://github.com/DeSentOfficial/AndroidApp/releases
 match: ^DeSent-v[0-9.]+\.apk$
-pubkey: npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xn0v6ua4
+pubkey: npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xnqnh0pte
 name: DeSent Email
-summary: Private email and personal productivity on Nostr
+summary: Private email. No ads. No bs. Today. Tomorrow. Always.
 description: |
-  DeSent — a play on *desent* (decentralized via Nostr) and *sent* (email) — is a
-  privacy-focused Android app for private email and personal productivity.
+  **DeSent Email**
 
-  - **Private email** — Nostr-native email with a client-side spam filter
-  - **Encrypted calendar** — NIP-52 calendar with sharing and RSVPs
-  - **Private notes & contacts** — NIP-78 self-encrypted private storage
-  - **File storage** — encrypted blob storage on desent.xyz
-  - **Secure key management** — keys in the Android Keystore with biometric access
-  - **NIP-46 remote signing** — use this phone as a bunker for your other devices
-  - **Wear OS companion** — watch app synced from the phone
+  Private email. No ads. No bs. Today. Tomorrow. Always.
 
-  Accounts sync exclusively through the DeSent service relay at `wss://desent.xyz`;
-  third-party relays are only ever contacted read-only, briefly, to fetch an
-  existing Nostr user's profile during login.
+  https://desent.xyz
+
+  DeSent is a private email / personal productivity application built on top of
+  Nostr. All events are stored as gift wraps sent to and from the relay. Once
+  an email comes into the relay it's wrapped and sent to the NIP-05's
+  recipient. Nothing is stored on the central servers in plain text.
+
+  Create an account through your existing Nostr keys, create a custodial one
+  using username and password, or a crypto wallet.
+
+  ## Features
+
+  - Email
+  - Calendar
+  - Notes
+  - Contacts
+  - Files
+  - Bunker Signing Service
+  - Light / Dark Mode
+  - Widgets
+  - Multiple Account support
+  - Account Exporting
+  - AI Inbox (Openclaw)
+  - Relay Mirroring (Premium)
+  - Key Rotation For Custodial Accounts (Premium)
+  - Aliases (More for purchase)
+  - Premium Alias names (Charged by character count only)
+
+  **Payments / Refunds:** All payments are settled through the Bitcoin
+  Lightning Network. Please see the website for refund policy.
+
+  - Nostr Npub — npub1l6gs47e0zvctjhgzfptlr27e2xa2ak7jv3gwjw7snsjpegen0xnqnh0pte
+  - Website — https://desent.xyz
+  - Support — https://support.desent.xyz or support@desent.xyz
+  - GitHub — https://github.com/DeSentOfficial
+
 tags:
   - email
   - nostr

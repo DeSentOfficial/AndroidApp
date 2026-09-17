@@ -17,7 +17,6 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 import xyz.desent.data.registration.model.RegistrationError
-import xyz.desent.data.repository.NostrRepository
 import xyz.desent.domain.model.AccountCreationResult
 import xyz.desent.domain.model.AvailabilityInfo
 import xyz.desent.domain.model.Invoice
@@ -49,7 +48,6 @@ class LoginViewModelCheckoutTest {
     private lateinit var authUseCase: AuthUseCase
     private lateinit var registrationUseCase: RegistrationUseCase
     private lateinit var custodialAccountRepository: CustodialAccountRepository
-    private lateinit var nostrRepository: NostrRepository
     private lateinit var refreshPrimaryAddressUseCase: RefreshPrimaryAddressUseCase
     private lateinit var paymentsUseCase: PaymentsUseCase
     private lateinit var aliasUseCase: AliasUseCase
@@ -65,7 +63,6 @@ class LoginViewModelCheckoutTest {
         authUseCase = mockk()
         registrationUseCase = mockk()
         custodialAccountRepository = mockk()
-        nostrRepository = mockk(relaxed = true)
         refreshPrimaryAddressUseCase = mockk(relaxed = true)
         paymentsUseCase = mockk()
         aliasUseCase = mockk()
@@ -93,7 +90,6 @@ class LoginViewModelCheckoutTest {
         authUseCase,
         registrationUseCase,
         custodialAccountRepository,
-        nostrRepository,
         refreshPrimaryAddressUseCase,
         paymentsUseCase,
         aliasUseCase
